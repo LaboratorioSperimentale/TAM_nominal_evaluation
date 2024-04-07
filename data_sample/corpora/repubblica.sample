@@ -1,0 +1,100 @@
+<text id="1">
+<s>
+1	I	il	R	RD	num=p|gen=m	2	det	_	_
+2	SEGRETI	segreto	S	S	num=p|gen=m	0	ROOT	_	_
+3	DELLA	di	E	EA	num=s|gen=f	2	comp	_	_
+4	NATO	Nato	S	SP	_	3	prep	_	_
+5	.	.	F	FS	_	2	punc	_	_
+</s>
+<s>
+1	È	essere	V	V	num=s|per=3|mod=i|ten=p	0	ROOT	_	_
+2	ABBASTANZA	ABBASTANZA	S	SP	_	1	subj	_	_
+3	strano	strano	A	A	num=s|gen=m	2	mod	_	_
+4	il	il	R	RD	num=s|gen=m	5	det	_	_
+5	disinteresse	disinteresse	S	S	num=s|gen=m	1	pred	_	_
+6	con	con	E	E	_	10	comp	_	_
+7	cui	cui	P	PR	num=n|gen=n	6	prep	_	_
+8	è	essere	V	VA	num=s|per=3|mod=i|ten=p	9	aux	_	_
+9	stata	essere	V	VA	num=s|mod=p|gen=f	10	aux	_	_
+10	accolta	accogliere	V	V	num=s|mod=p|gen=f	5	mod_rel	_	_
+11	l'	il	R	RD	num=s|gen=n	12	det	_	_
+12	intervista	intervista	S	S	num=s|gen=f	10	subj	_	_
+13	che	che	P	PR	num=n|gen=n	19	subj	_	_
+14	l'	l'	P	PC	num=s|per=3|gen=n	19	comp_ind	_	_
+15	on.	on.	S	SA	_	17	mod	_	_
+16	Rino	Rino	S	SP	_	17	mod	_	_
+17	Formica	Formica	S	SP	_	19	subj	_	_
+18	ha	avere	V	VA	num=s|per=3|mod=i|ten=p	19	aux	_	_
+19	dato	dare	V	V	num=s|mod=p|gen=m	12	mod_rel	_	_
+20	sabato	sabato	S	S	num=s|gen=m	19	obj	_	_
+21	scorso	scorso	A	A	num=s|gen=m	20	mod	_	_
+22	alla	al	E	EA	num=s|gen=f	19	comp_loc	_	_
+23	Repubblica	Repubblica	S	SP	_	22	prep	_	_
+24	.	.	F	FS	_	1	punc	_	_
+</s>
+<s>
+1	Dopo	dopo	E	E	_	0	ROOT	_	_
+2	tutto	tutto	T	T	num=s|gen=m	3	mod	_	_
+3	quello	quello	P	PD	num=s|gen=m	1	prep	_	_
+4	che	che	P	PR	num=n|gen=n	7	subj	_	_
+5	si	si	P	PC	num=n|per=3|gen=n	7	clit	_	_
+6	è	essere	V	VA	num=s|per=3|mod=i|ten=p	7	aux	_	_
+7	detto	dire	V	V	num=s|mod=p|gen=m	3	mod_rel	_	_
+8	e	e	C	CC	_	3	con	_	_
+9	scritto	scrivere	V	V	num=s|mod=p|gen=m	3	mod	_	_
+10	attorno	attorno	B	B	_	9	mod	_	_
+11	alla	al	E	EA	num=s|gen=f	9	comp	_	_
+12	strage	strage	S	S	num=s|gen=f	11	prep	_	_
+13	del	di	E	EA	num=s|gen=m	12	comp	_	_
+14	rapido	rapido	A	A	num=s|gen=m	13	prep	_	_
+15	904	904	N	N	_	14	mod	_	_
+16	,	,	F	FF	_	9	con	_	_
+17	mentre	mentre	C	CS	_	9	conj	_	_
+18	divampa	divampare	V	V	num=s|per=3|mod=i|ten=p	17	sub	_	_
+19	la	il	R	RD	num=s|gen=f	20	det	_	_
+20	polemica	polemica	S	S	num=s|gen=f	18	obj	_	_
+21	sull'	su	E	EA	num=s|gen=n	18	comp_loc	_	_
+22	efficienza	efficienza	S	S	num=s|gen=f	21	prep	_	_
+23	e	e	C	CC	_	18	con	_	_
+24	l'	il	R	RD	num=s|gen=n	25	det	_	_
+25	attendibilità	attendibilità	S	S	num=n|gen=f	41	subj	_	_
+26	dei	di	E	EA	num=p|gen=m	25	comp	_	_
+27	nostri	nostro	A	AP	num=p|gen=m	31	mod	_	_
+28	"	"	F	FB	_	29	punc	_	_
+29	nuovi	nuovo	A	A	num=p|gen=m	31	mod	_	_
+30	"	"	F	FB	_	29	punc	_	_
+31	servizi	servizio	S	S	num=p|gen=m	26	prep	_	_
+32	segreti	segreto	A	A	num=p|gen=m	31	mod	_	_
+33	,	,	F	FF	_	25	con	_	_
+34	le	il	R	RD	num=p|gen=f	35	det	_	_
+35	dichiarazioni	dichiarazione	S	S	num=p|gen=f	25	conj	_	_
+36	del	di	E	EA	num=s|gen=m	35	comp	_	_
+37	capogruppo	capogruppo	S	S	num=s|gen=m	36	prep	_	_
+38	dei	di	E	EA	num=p|gen=m	37	comp	_	_
+39	deputati	deputato	S	S	num=p|gen=m	38	prep	_	_
+40	socialisti	socialista	A	A	num=p|gen=m	39	mod	_	_
+41	meritavano	meritare	V	V	num=p|per=3|mod=i|ten=i	18	conj	_	_
+42	di	di	E	E	_	41	arg	_	_
+43	essere	essere	V	V	mod=f	42	prep	_	_
+44	approfondite	approfondire	V	V	num=p|mod=p|gen=f	43	pred	_	_
+45	.	.	F	FS	_	1	punc	_	_
+</s>
+<s>
+1	Però	però	B	B	_	0	ROOT	_	_
+2	,	,	F	FF	_	1	punc	_	_
+3	a	a	E	E	_	0	ROOT	_	_
+4	ben	ben	B	B	_	5	mod	_	_
+5	pensar-	pensare	V	V	mod=f	3	prep	_	_
+6	ci	ci	P	PC	num=p|per=1|gen=n	3	prep	_	_
+7	,	,	F	FF	_	8	punc	_	_
+8	questo	questo	P	PD	num=s|gen=m	6	mod	_	_
+9	disinteresse	disinteresse	S	S	num=s|gen=m	11	subj	_	_
+10	non	non	B	BN	_	11	neg	_	_
+11	è	essere	V	V	num=s|per=3|mod=i|ten=p	8	mod_rel	_	_
+12	poi	poi	B	B	_	11	mod	_	_
+13	tanto	tanto	S	S	num=s|gen=m	11	pred	_	_
+14	strano	strano	A	A	num=s|gen=m	13	mod	_	_
+15	.	.	F	FS	_	3	punc	_	_
+</s>
+<s>
+1	Formica	Formica	S	SP	_	3	subj	_	_
