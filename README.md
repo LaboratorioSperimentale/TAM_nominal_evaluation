@@ -1,5 +1,43 @@
 # Temporal, Aspectual, Modal evaluation of reference
 
+- [Temporal, Aspectual, Modal evaluation of reference](#temporal-aspectual-modal-evaluation-of-reference)
+	- [Repository structure](#repository-structure)
+	- [Corpora](#corpora)
+		- [ItWaC](#itwac)
+		- [Annotation](#annotation)
+			- [Sample input](#sample-input)
+		- [Repubblica](#repubblica)
+			- [Annotation](#annotation-1)
+			- [Sample input](#sample-input-1)
+		- [WikiCoNLL](#wikiconll)
+			- [Annotation](#annotation-2)
+			- [Sample input](#sample-input-2)
+		- [itTenTen](#ittenten)
+
+
+## Repository structure
+
+This repository contains code and sample data used for the study "Temporal, aspectual and modal evaluation of reference"
+
+The folder is structured as follows:
+1. subfolder `cfgs` contains configuration files (in `.yaml` format) used to run the code and reproduce the study
+2. subfolder `data_sample` contains samples of input and output data used in the study. Cases will be explained in this README
+3. subfolder `logs` is the default output folder for python loggers
+4. `src` contains the main library
+5. `main.py` contains the code that is actually runnable
+
+
+In order to run the code you should:
+1. create a virtual environment (`python > 3.11` is recommended)
+2. install packages listed in `requirements.txt`
+3. activate your virtual environment
+4. run `main.py --conf cfgs/my_conf.yaml`
+
+
+Actual output data is maintained on separate repositories:
+- LINK
+
+
 ## Corpora
 
 For the described data collection, we employed multiple sources. A sample for each one can be found in the folder `data_sample/corpora/`.
