@@ -7,7 +7,7 @@ import TAM.pos_maps as pmaps
 
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='logs/utils.log', format='%(levelname)s:%(message)s', 
+logging.basicConfig(filename='logs/utils.log', format='%(levelname)s:%(message)s',
 					encoding='utf-8', level=logging.DEBUG)
 
 def read_wikiconll(fname):
@@ -114,7 +114,7 @@ def read_itwac(fname):
 			else:
 				line = line.strip().split("\t")
 				start_id += 1
-				
+
 				if len(line) == 3:
 
 					tok_id = start_id
@@ -138,11 +138,11 @@ def read(filename, source):
 	if source == "ITWAC":
 		print("Reading from ITWAC")
 		return read_itwac(filename)
-	
+
 	elif source == "REPUBBLICA":
 		print("Reading from REPUBBLICA")
 		return read_repubblica(filename)
-	
+
 	elif source == "WIKICONLL":
 		print("Reading from WIKICONLL")
 		return read_wikiconll(filename)
@@ -151,15 +151,29 @@ def read(filename, source):
 
 
 def merge_frequencies(files_list, output_file):
+	"""
+	The function `merge_frequencies` reads data from multiple files, merges the frequencies of each
+	unique key, and writes the merged frequencies to an output file.
+
+	Args:
+	  files_list: A list of file names that contain frequency data in the format of "count\tword" on
+	each line. The function `merge_frequencies` reads these files and merges the frequencies of the same
+	words into a single total frequency count.
+	  output_file: The `output_file` parameter is a string that represents the file path where the
+	merged frequencies will be written to. This function takes a list of file paths (`files_list`)
+	containing frequency data and merges them into a single frequency count, which is then written to
+	the specified `output_file`.
+	"""
 
 	total = collections.defaultdict(int)
 
 	for filename in files_list:
-		with open(filename) as fin:
+		with open(filename, encoding="utf-8") as fin:
 			for line in fin:
 				linesplit = line.strip().split("\t")
 
-				total[linesplit[1]] += int(linesplit[0])
+				if len(linesplit) > 1:
+					total[linesplit[1]] += int(linesplit[0])
 
 	with open(output_file, "w", encoding="utf-8") as fout:
 		for key, f in sorted(total.items()):
@@ -168,9 +182,24 @@ def merge_frequencies(files_list, output_file):
 
 
 def load_NOUNS (input_filename, threshold):
+	"""
+	This Python function loads nouns from an input file based on a specified threshold frequency.
+
+	Args:
+	  input_filename: The `input_filename` parameter is the name of the file from which the function
+	will load the data. This file should contain tab-separated values where the first value is an
+	integer frequency count and the second value is a noun.
+	  threshold: The `threshold` parameter in the `load_NOUNS` function is used to filter out nouns
+	based on their frequency count. Only nouns with a frequency count greater than or equal to the
+	specified threshold will be accepted and added to the `accepted` set.
+
+	Returns:
+	  The function `load_NOUNS` returns a set of accepted nouns that have a frequency greater than or
+	equal to the specified threshold.
+	"""
 	accepted = set()
 
-	with open(input_filename) as fin:
+	with open(input_filename, encoding="utf-8") as fin:
 		for line in fin:
 			linesplit = line.strip().split("\t")
 			f = int(linesplit[0])
