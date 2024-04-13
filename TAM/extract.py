@@ -232,7 +232,7 @@ def extract_NOUN(filename, source, file_id, output_directory):
 
 
 if __name__ == "__main__":
-	accepted_nouns = utils.load_NOUNS("../data/output/REPUBBLICA_01.NOUNS.tsv", 2)
+	accepted_nouns = utils.load_from_file("../data/output/REPUBBLICA_01.NOUNS.tsv", 2)
 
 # TODO: extract nouns
 # TODO: only consider base nouns more frequent than X

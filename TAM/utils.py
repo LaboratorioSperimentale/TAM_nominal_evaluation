@@ -11,6 +11,15 @@ logging.basicConfig(filename='logs/utils.log', format='%(levelname)s:%(message)s
 					encoding='utf-8', level=logging.DEBUG)
 
 def read_wikiconll(fname):
+	"""
+	This Python function reads a file in the wikiCoNLL format and yields Sentence objects containing
+	Token objects parsed from the file.
+
+	Args:
+	  fname: The `fname` parameter in the `read_wikiconll` function is a string that represents the file
+	name or path to the file that contains the data in the wikiCoNLL format. This function reads the
+	contents of the specified file, processes the data, and yields `Sentence` objects
+	"""
 	sentence = objs.Sentence(source="wikiCoNLL")
 
 	with open(fname, encoding="utf-8") as fin:
@@ -58,8 +67,16 @@ def read_wikiconll(fname):
 			yield sentence
 
 
-
 def read_repubblica(fname):
+	"""
+	This Python function reads a file containing data in a specific format from the "repubblica" source,
+	parses the content, and yields sentences represented as objects with token information.
+
+	Args:
+	  fname: It looks like the code you provided is a Python function that reads a file in a specific
+	format and yields sentences represented as objects. The function reads the file line by line,
+	processes the lines, and creates tokens and sentences based on the content of the file.
+	"""
 	sentence = objs.Sentence(source="repubblica")
 
 	with open(fname, encoding="utf-8") as fin:
@@ -95,6 +112,16 @@ def read_repubblica(fname):
 
 
 def read_itwac(fname):
+	"""
+	The `read_itwac` function reads a file in the ITWAC format, parses the content to extract tokens and
+	their attributes, and yields sentences containing the parsed tokens.
+
+	Args:
+	  fname: It looks like the code you provided is a Python function that reads a file in the ITWAC
+	format and yields sentences. The function reads the file line by line, processes each line to
+	extract token information, and creates a Sentence object with Token objects for each line of valid
+	token data.
+	"""
 
 	sentence = objs.Sentence(source="itwac")
 
@@ -134,6 +161,21 @@ def read_itwac(fname):
 
 
 def read(filename, source):
+	"""
+	The function `read` reads data from different sources based on the input `source` parameter.
+
+	Args:
+	  filename: The `filename` parameter in the `read` function is a string that represents the name or
+	path of the file that you want to read data from.
+	  source: The `source` parameter in the `read` function is used to determine from which specific
+	source the data should be read. The function then calls different helper functions based on the
+	value of the `source` parameter to read data from different sources such as "ITWAC", "REPUBBLICA
+
+	Returns:
+	  The function `read()` is returning the result of reading from the specified source based on the
+	`source` parameter. The specific function being called and returned depends on the value of the
+	`source` parameter.
+	"""
 
 	if source == "ITWAC":
 		print("Reading from ITWAC")
@@ -180,22 +222,24 @@ def merge_frequencies(files_list, output_file):
 			print(f"{f}\t{key}", file=fout)
 
 
-
-def load_NOUNS (input_filename, threshold):
+def load_from_file (input_filename, threshold):
 	"""
-	This Python function loads nouns from an input file based on a specified threshold frequency.
+	This Python function reads data from a file, filters it based on a threshold, and returns a set of
+	accepted values.
 
 	Args:
 	  input_filename: The `input_filename` parameter is the name of the file from which the function
-	will load the data. This file should contain tab-separated values where the first value is an
-	integer frequency count and the second value is a noun.
-	  threshold: The `threshold` parameter in the `load_NOUNS` function is used to filter out nouns
-	based on their frequency count. Only nouns with a frequency count greater than or equal to the
-	specified threshold will be accepted and added to the `accepted` set.
+	`load_from_file` will read the data. This file should contain tab-separated values where the first
+	value is an integer and the second value is a string.
+	  threshold: The `threshold` parameter in the `load_from_file` function is used to filter out data
+	based on a numerical value. In this case, the function reads a file where each line contains two
+	values separated by a tab character. The function checks the first value (converted to an integer)
+	against the threshold
 
 	Returns:
-	  The function `load_NOUNS` returns a set of accepted nouns that have a frequency greater than or
-	equal to the specified threshold.
+	  The function `load_from_file` returns a set of strings that meet the specified threshold
+	condition. The set contains the second element of each line in the input file where the first
+	element is greater than or equal to the threshold value.
 	"""
 	accepted = set()
 
@@ -207,7 +251,6 @@ def load_NOUNS (input_filename, threshold):
 				accepted.add(linesplit[1])
 
 	return accepted
-
 
 
 if __name__ == "__main__":
