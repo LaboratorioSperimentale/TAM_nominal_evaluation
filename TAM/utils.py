@@ -42,7 +42,6 @@ def read_wikiconll(fname):
 
 			else:
 				line = line.strip().split("\t")
-				# print(line)
 
 				tok_id = int(line[0])
 				form = line[1]
