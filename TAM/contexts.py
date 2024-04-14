@@ -12,8 +12,8 @@ def extract_ctx_advN(filename, source,
 	criteria and writes the results to output files.
 
 	Args:
-	  filename: The `filename` parameter in the `extract_ctx_advN` function is the name of the file from
-	which the sentences will be read for processing.
+	  filename: The `filename` parameter in the `extract_ctx_advN` function is the name of the file
+	  (corpus) from	which the sentences will be read for processing.
 	  source: The `source` parameter in the `extract_ctx_detADVN` function is a string
 	representing the source of the data from which you are extracting contexts for compounds.
 	  accepted_prefs: The `accepted_prefs` parameter in the `extract_ctx_advN` function is a set that
