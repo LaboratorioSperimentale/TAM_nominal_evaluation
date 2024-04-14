@@ -132,12 +132,13 @@ if __name__ == "__main__":
 	subparsers = root_parser.add_subparsers(title="actions", dest="actions")
 
 
-	parser_frequencies = subparsers.add_parser('frequencies', parents=[parent_parser],
-											   description='compute frequency of NOUNS',
-											   help='compute frequency of NOUNS')
-	# parser_frequencies.add_argument("-c", "--conf-file", default="cfg/conf.yml",
-	# 							   help="path to yaml configuration file")
-	parser_frequencies.add_argument("-i", "--input-files-list", default="data_sample/files_input.tsv",
+	parser_frequencies = subparsers.add_parser('frequencies',
+											formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+											parents=[parent_parser],
+											description='compute frequency of NOUNS',
+											help='compute frequency of NOUNS')
+	parser_frequencies.add_argument("-i", "--input-files-list",
+								 default="data_sample/files_input.tsv",
 								 type=pathlib.Path,
 								 help="path to file containing list of input files")
 	parser_frequencies.add_argument("-o", "--output-folder", default="data_sample/output_frequencies/",
@@ -147,10 +148,9 @@ if __name__ == "__main__":
 
 
 	parser_merge = subparsers.add_parser("merge", parents=[parent_parser],
-										description='merge frequency lists',
-										help='merge frequency lists')
-	# parser_merge.add_argument("-c", "--conf-file", default="cfg/conf.yml",
-	# 						  help="path to yaml configuration file")
+									  formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+									  description='merge frequency lists',
+									  help='merge frequency lists')
 	parser_merge.add_argument("-i", "--input-folder", default="data_sample/output_frequencies",
 						   type=pathlib.Path,
 						   	 help="path to folder containing files to merge")
@@ -167,8 +167,9 @@ if __name__ == "__main__":
 
 
 	parser_extract = subparsers.add_parser("extract", parents=[parent_parser],
-											description='extract raw data',
-											help='extract raw data')
+										formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+										description='extract raw data',
+										help='extract raw data')
 	parser_extract.add_argument("-i", "--input-files-list", default="data_sample/files_input.tsv",
 							 type=pathlib.Path,
 							 help="path to file containing list of input files")
@@ -188,8 +189,9 @@ if __name__ == "__main__":
 
 
 	parser_contexts = subparsers.add_parser("contexts", parents=[parent_parser],
-											description='extract contexts',
-											help='contexts')
+										 formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+										 description='extract contexts',
+										 help='extract contexts')
 	parser_contexts.add_argument("-i", "--input-files", default="data_sample/files_input.tsv",
 							  type=pathlib.Path,
 							  help="path to file containing list of input files")
@@ -217,6 +219,16 @@ if __name__ == "__main__":
 	parser_contexts.add_argument("-c", "--context-width", type=int, default=20,
 							     help="width of left and right sentence context")
 	parser_contexts.set_defaults(func=_extract_contexts)
+
+
+	parser_sample = subparsers.add_parser("sample", parents=[parent_parser],
+									    formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+										description='sample contexts',
+										help='sample contexts')
+	#input?
+	#number of contexts
+	#output dir
+	#random seed
 
 	args = root_parser.parse_args()
 
