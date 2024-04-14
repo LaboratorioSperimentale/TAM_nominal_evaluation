@@ -1,3 +1,7 @@
+"""
+This python module contains maps in the form of dictionaries. These allow to have a uniform
+denomination for part of speech tags for data coming from different sources.
+"""
 itwac_map = {
              "ADJ": "ADJ",
              "ADV": "ADV",
@@ -12,7 +16,6 @@ itwac_map = {
 			 "NOUN": "NOUN",
 			 "DET": "X"}
 
-
 repubblica_map = {
              "A": "ADJ",
              "EA": "DET",
@@ -25,7 +28,6 @@ repubblica_map = {
              "R": "DET",
              "S": "NOUN",
             }
-
 
 wikiCoNLL_map = {
     "S": "NOUN",
