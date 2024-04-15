@@ -97,7 +97,7 @@ def extract_ctx_detADVN(filename, source,
 		candidates = {}
 
 		for tok_id, token in enumerate(sentence.sentence):
-			if token.pos == "ADV" and token.form in accepted_adverbs and \
+			if token.pos == "ADV" and \
 				tok_id > 2 and \
 					tok_id < len(sentence.sentence)-2:
 					candidates[tok_id] = token
@@ -144,7 +144,9 @@ def extract_ctx_detADVN(filename, source,
 					adverb_object.form = adverb_object.form + " " + next_object.form
 					ngramtype = "DET ADV NOUN"
 					sentence_portion_right = sentence.sentence[c_id+3:min(len(sentence.sentence), c_id+3+ctx+1)]
-					occurrence = sentence.sentence[c_id-1:c_id+3]
+					occurrence = [sentence.sentence[c_id-1],
+								sentence.sentence[c_id],
+								sentence.sentence[c_id+2]]
 
 				elif (
 					next_object.pos == "ADJ" and \
@@ -157,8 +159,8 @@ def extract_ctx_detADVN(filename, source,
 					# adj_object = next_object
 					ngramtype = "DET ADV ADJ NOUN"
 
-					sentence_portion_right = sentence.sentence[c_id+3:min(len(sentence.sentence), c_id+3+ctx+1)]
-					occurrence = sentence.sentence[c_id-1:c_id+3]
+					# sentence_portion_right = sentence.sentence[c_id+3:min(len(sentence.sentence), c_id+3+ctx+1)]
+					# occurrence = sentence.sentence[c_id-1:c_id+3]
 
 
 			if pprevious_object.pos == "DET":                                           # DET ? ADV ? case
@@ -180,17 +182,18 @@ def extract_ctx_detADVN(filename, source,
 					sentence_portion_right = sentence.sentence[c_id+2:min(len(sentence.sentence), c_id+1+ctx+1)]
 					occurrence = sentence.sentence[c_id-2:c_id+2]
 
+			if adverb_object.form in accepted_adverbs:
+				if sentence_portion_left is not None and sentence_portion_right is not None:
+					ctx_left = " ".join([token.form for token in sentence_portion_left])
+					candidate_str = " ".join([token.form for token in occurrence])
+					ctx_right = " ".join([token.form for token in sentence_portion_right])
 
-			if sentence_portion_left is not None and sentence_portion_right is not None:
-				ctx_left = " ".join([token.form for token in sentence_portion_left])
-				candidate_str = " ".join([token.form for token in occurrence])
-				ctx_right = " ".join([token.form for token in sentence_portion_right])
+					if not adverb_object.form in output_files:
+						output_files[adverb_object.form] = open(
+							output_dir.joinpath(f"{adverb_object.form}.contexts.tsv"),
+							"w",
+							encoding="utf-8")
 
-				if not adverb_object.form in output_files:
-					output_files[adverb_object.form] = open(output_dir.joinpath(f"{adverb_object.form}.contexts.tsv"),
-															"w",
-															encoding="utf-8")
-
-				print(f"{source}\t{adverb_object.form}\t{noun_object.form}\t" \
-		  			f"{ngramtype}\t{ctx_left}\t{candidate_str}\t{ctx_right}",
-		  			file=output_files[adverb_object.form])
+					print(f"{source}\t{adverb_object.form}\t{noun_object.form}\t" \
+						f"{ngramtype}\t{ctx_left}\t{candidate_str}\t{ctx_right}",
+						file=output_files[adverb_object.form])

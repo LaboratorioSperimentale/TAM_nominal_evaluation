@@ -139,10 +139,10 @@ def extract_detADVN(filename, source, file_id, accepted_nouns, output_directory)
 				):                                                                          # DET ADV ADJ NOUN case
 					noun_object = nnext_object
 
-					if noun_object.form in accepted_nouns:
-						freqs[(adverb_object.form, noun_object.form)] += 1
-						adverbs_freqs[adverb_object.form] += 1
-						nouns_freqs[noun_object.form] += 1
+					# if noun_object.form in accepted_nouns:
+					# 	freqs[(adverb_object.form, noun_object.form)] += 1
+					# 	adverbs_freqs[adverb_object.form] += 1
+					# 	nouns_freqs[noun_object.form] += 1
 
 			if pprevious_object.pos == "DET":                                               # DET ? ADV ? case
 

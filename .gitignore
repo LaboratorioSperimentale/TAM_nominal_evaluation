@@ -5,3 +5,5 @@ data/
 cfgs/prova.yml
 TAM/sketchengine_api.py
 tasks.txt
+TAM/map_annotations.py
+pipeline.txt

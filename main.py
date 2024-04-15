@@ -7,21 +7,10 @@ import tqdm
 import TAM.extract as e
 import TAM.contexts as c
 import TAM.utils as u
+import TAM.sample as s
 
 
 def _compute_noun_frequencies(args):
-	"""
-	The function `_compute_noun_frequencies` reads a list of input files, processes each file to extract
-	nouns, and saves the results in an output directory.
-
-	Args:
-	  args: It looks like the function `_compute_noun_frequencies` takes in a single argument `args`.
-	This argument likely contains information such as a configuration file path, a list of input files,
-	and an output folder path. The function reads a list of input files from a file specified in
-	`args.input
-	"""
-	# stream = open(args.conf_file)
-	# dictionary = yaml.load(stream, Loader)
 
 	input_files = []
 	with open(Path(args.input_files_list), encoding="utf-8") as fin:
@@ -39,17 +28,6 @@ def _compute_noun_frequencies(args):
 
 
 def _merge_frequencies(args):
-	"""
-	The function `_merge_frequencies` takes input filenames matching a specific pattern, merges their
-	frequencies, and saves the result to an output file.
-
-	Args:
-	  args: It looks like the code snippet you provided is calling a function `_merge_frequencies` with
-	the `args` parameter. The `args` parameter seems to be an object or dictionary containing the
-	following attributes:
-	"""
-	# stream = open(args.conf_file)
-	# dictionary = yaml.load(stream, Loader)
 
 	input_filenames = Path(args.input_folder).glob(f"*{args.pattern}*")
 	output_filename = Path(args.output_folder).joinpath(f"{args.output_filename}")
@@ -58,17 +36,6 @@ def _merge_frequencies(args):
 
 
 def _extract_raw(args):
-	"""
-	The function `_extract_raw` reads input files, creates output directories, loads accepted nouns, and
-	extracts information based on the specified type.
-
-	Args:
-	  args: The code snippet you provided seems to be a part of a script that extracts information from
-	input files based on certain criteria and saves the output in a specified directory. The script uses
-	various functions like `load_NOUNS`, `extract_advN`, and `extract_detADVN` to process the input
-	"""
-	# stream = open(args.conf_file)
-	# dictionary = yaml.load(stream, Loader)
 
 	input_files = []
 	with open(Path(args.input_files), encoding="utf-8") as fin:
@@ -90,6 +57,7 @@ def _extract_raw(args):
 			e.extract_detADVN(path, source, file_id, accepted_nouns, output_directory)
 
 def _extract_contexts(args):
+
 	input_files = []
 	with open(Path(args.input_files), encoding="utf-8") as fin:
 		for line in fin:
@@ -121,8 +89,15 @@ def _extract_contexts(args):
 						 args.context_width, output_directory, output_files)
 
 
-def _filter(args):
-	pass
+def _sample_contexts(args):
+
+	input_files = args.input_folder.glob("*contexts.tsv")
+
+	args.output_folder.mkdir(parents=True, exist_ok=True)
+
+	for file in input_files:
+		s.sample_contexts(file, args.contexts_number, args.seed, args.output_folder)
+
 
 if __name__ == "__main__":
 
@@ -170,7 +145,7 @@ if __name__ == "__main__":
 										formatter_class=argparse.ArgumentDefaultsHelpFormatter,
 										description='extract raw data',
 										help='extract raw data')
-	parser_extract.add_argument("-i", "--input-files-list", default="data_sample/files_input.tsv",
+	parser_extract.add_argument("-i", "--input-files", default="data_sample/files_input.tsv",
 							 type=pathlib.Path,
 							 help="path to file containing list of input files")
 	parser_extract.add_argument("--type", choices=["compound", "ngram"], default="compound",
@@ -179,7 +154,7 @@ if __name__ == "__main__":
 							 type=pathlib.Path,
 							 default="data_sample/output_compoundfrequencies/",
 							 help="path to output folder")
-	parser_extract.add_argument("--accepted-nouns",
+	parser_extract.add_argument("--nouns-filename",
 							 default="data_sample/output_frequencies/accepted.tsv",
 							 type=pathlib.Path,
 							 help="path to list of accepted nouns")
@@ -199,7 +174,7 @@ if __name__ == "__main__":
 							    help="type of structures to extract")
 	parser_contexts.add_argument("-o", "--output-folder",
 							  type=pathlib.Path,
-							  default="data_sample/output_compoundfrequencies/",
+							  default="data_sample/output_compoundcontexts/",
 							  help="path to output folder")
 	parser_contexts.add_argument("--accepted-nouns", default="data_sample/final_lists/nouns.txt",
 							  type=pathlib.Path,
@@ -225,10 +200,18 @@ if __name__ == "__main__":
 									    formatter_class=argparse.ArgumentDefaultsHelpFormatter,
 										description='sample contexts',
 										help='sample contexts')
-	#input?
-	#number of contexts
-	#output dir
-	#random seed
+	parser_sample.add_argument("-i", "--input-folder", type=pathlib.Path,
+							default="data_sample/output_compoundcontexts/",
+							help="path to folder containing *contexts.tsv files")
+	parser_sample.add_argument("-o", "--output-folder", type=pathlib.Path,
+							default="data_sample/output_compoundcontexts_sample/",
+							help="path to output folder")
+	parser_sample.add_argument("-s", "--seed", type=int, default=1354,
+							help="random seed for reproducibility")
+	parser_sample.add_argument("-n", "--contexts-number", type=int, default=20,
+							help="number of contexts to sample for each noun")
+	parser_sample.set_defaults(func=_sample_contexts)
+
 
 	args = root_parser.parse_args()
 
