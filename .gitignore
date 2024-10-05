@@ -14,3 +14,4 @@ pipeline.txt
 *contexts*
 data/nomi.sorted
 *.bak
+*temporary_annotation.py
