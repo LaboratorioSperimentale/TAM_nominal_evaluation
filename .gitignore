@@ -1,7 +1,6 @@
 .venv/
 logs/
 *__pycache__*
-data/
 data_private/
 cfgs/prova.yml
 TAM/sketchengine_api.py
@@ -9,4 +8,9 @@ tasks.txt
 TAM/map_annotations.py
 pipeline.txt
 
-data/
+*ITWAC*
+*WIKICONLL*
+*REPUBBLICA*
+*contexts*
+data/nomi.sorted
+*.bak

@@ -44,7 +44,7 @@ def read_wikiconll(fname):
 				line = line.strip().split("\t")
 
 				tok_id = int(line[0])
-				form = line[1]
+				form = line[1].strip().lower()
 				lemma = line[2]
 				pos = line[3]
 				head = -1
@@ -93,7 +93,7 @@ def read_repubblica(fname):
 				line = line.strip().split("\t")
 
 				tok_id = int(line[0])
-				form = line[1].strip()
+				form = line[1].strip().lower()
 				lemma = line[2].strip()
 				pos = line[4].strip()
 				head = int(line[6])
@@ -144,7 +144,7 @@ def read_itwac(fname):
 				if len(line) == 3:
 
 					tok_id = start_id
-					form = line[0]
+					form = line[0].strip().lower()
 					lemma = line[2]
 					pos = line[1].split(":")[0]
 					if pos in pmaps.itwac_map:
